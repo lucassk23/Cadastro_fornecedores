@@ -1,4 +1,4 @@
-namespace megawork.fornecedorefornecedoreses;
+namespace megawork.fornecedores;
 
 using {
     cuid,
@@ -6,6 +6,9 @@ using {
     Country,
     Currency
 } from '@sap/cds/common';
+
+using from '@sap/cds-common-content';
+
 
 entity fornecedores : cuid, managed {
     NumeroDofornecedor : Integer;
