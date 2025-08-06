@@ -1,0 +1,218 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "cadastrofornecedoresui",
+    "type": "application",
+    "i18n": {
+      "bundleUrl": "i18n/i18n.properties",
+      "supportedLocales": [
+        ""
+      ]
+    },
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.18.4",
+      "toolsId": "caec9173-8e52-4a19-992f-e2268f74a008"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/fornecedores-srv/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "CadastroFornecedores-display": {
+          "semanticObject": "CadastroFornecedores",
+          "action": "display",
+          "title": "{{CadastroFornecedores-display.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.138.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "cadastrofornecedoresui.i18n.i18n",
+          "supportedLocales": [
+            ""
+          ]
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties",
+        "settings": {
+          "supportedLocales": [
+            ""
+          ]
+        }
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "FornecedoresList",
+          "target": [
+            "FornecedoresList"
+          ]
+        },
+        {
+          "pattern": "Fornecedores({key}):?query:",
+          "name": "FornecedoresObjectPage",
+          "target": [
+            "FornecedoresList",
+            "FornecedoresObjectPage"
+          ]
+        },
+        {
+          "pattern": "Fornecedores({key})/Materiais({key2}):?query:",
+          "name": "MateriaisObjectPage",
+          "target": [
+            "FornecedoresList",
+            "FornecedoresObjectPage",
+            "MateriaisObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "FornecedoresList": {
+          "type": "Component",
+          "id": "FornecedoresList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Fornecedores",
+              "variantManagement": "Page",
+              "navigation": {
+                "Fornecedores": {
+                  "detail": {
+                    "route": "FornecedoresObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
+        },
+        "FornecedoresObjectPage": {
+          "type": "Component",
+          "id": "FornecedoresObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Fornecedores",
+              "navigation": {
+                "Materiais": {
+                  "detail": {
+                    "route": "MateriaisObjectPage"
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/Fornecedores({key})"
+        },
+        "MateriaisObjectPage": {
+          "type": "Component",
+          "id": "MateriaisObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Fornecedores/Materiais"
+            }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/Fornecedores({key})/Materiais({key2})"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}
