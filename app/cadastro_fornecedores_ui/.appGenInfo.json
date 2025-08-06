@@ -1,0 +1,33 @@
+{
+  "generationParameters": {
+    "generationDate": "Wed Aug 06 2025 19:21:46 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "Local CAP",
+    "metadataFilename": "",
+    "serviceUrl": "http://localhost:4004/odata/v4/fornecedores-srv/",
+    "appName": "cadastro_fornecedores_ui",
+    "appTitle": "Cadastro de Fornecedores",
+    "appDescription": "Cadastro Fornecedores",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.138.1",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.18.4",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "Fornecedores"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "Materiais"
+      }
+    ],
+    "launchText": "To launch the generated app, start your CAP project:  and navigate to the following location in your browser:\n\nhttp://localhost:4004/cadastro_fornecedores_ui/webapp/index.html"
+  }
+}
